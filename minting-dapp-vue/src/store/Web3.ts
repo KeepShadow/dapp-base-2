@@ -101,6 +101,13 @@ export const useWeb3 = defineStore('Web3', {
         walletClient: ethereumClient
       })
 
+      setTimeout(() => {
+        console.log(this.contract)
+      }, 2000)
+
+      console.log({ chains, publicClient, webSocketPublicClient })
+      console.log('teste')
+
       this.$patch({
         maxSupply: Number(await this.contract.read.maxSupply()),
         totalSupply: Number(await this.contract.read.totalSupply([])),
@@ -110,7 +117,7 @@ export const useWeb3 = defineStore('Web3', {
         isWhitelistMintEnabled: await this.contract.read.whitelistMintEnabled([]),
         isUserInWhitelist: Whitelist.contains(this.userAddress ?? ''),
         amountAllowed: Whitelist.getAmountAllowed(this.userAddress ?? ''),
-        alreadyMintedAmount: 0
+        alreadyMintedAmount: await this.contract.read.alreadyMinted([this.userAddress ?? ''])
       })
 
       this.initDone = true
@@ -120,7 +127,6 @@ export const useWeb3 = defineStore('Web3', {
         // console.log('ACCOUNT EVENT', isConnected, address)
         if (isConnected) {
           this.userAddress = address
-          this.alreadyMintedAmount = this.contract.read.alreadyMinted([this.userAddress ?? ''])
           /* console.log(Whitelist.getProofForAddress(this.userAddress!) as `0x${string}`[]) */
         } else {
           this.userAddress = null
