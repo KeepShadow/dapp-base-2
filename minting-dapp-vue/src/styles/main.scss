@@ -5,22 +5,31 @@
 @import './components/general.scss';
 @import './components/minting-dapp.scss';
 
-@font-face {
-  font-family: "Content";
-  src: url("../fonts/Overpass-VariableFont_wght.woff");
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 @font-face {
   font-family: "Headers";
-  src: url("../fonts/electroharmonix.woff");
+  src: url("../fonts/PICOBLA_.woff");
 }
 body{
-  font-family: "Content";
+  font-family: 'Roboto', sans-serif!important;
   font-size: 18px!important;
   background-color: #65059B!important;
   padding: 0!important;
-  background-image: url(../assets/bcg.png);
+  /* background-image: url(../assets/bcg.png); */
   background-repeat: no-repeat;
   background-size: cover;
+}
+.videoBg{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  object-fit: cover;
+  object-position: center;
 }
 h1, h2, h3, h4, h5, h6{
   font-family: "Headers";
@@ -38,24 +47,6 @@ button{
   text-align: center;
   z-index: 100;
 }
-.sidebar{
-  width: 183px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  display: none;
-  border-right: 10px solid #821FB8;
-}
-.sidebar ul{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: stretch;
-  padding-left: 0;
-}
 #minting-dapp{
   min-height: 100vh;
   display: grid;
@@ -68,6 +59,7 @@ button{
 #minting-dapp .no-wallet{
   background-color: transparent;
   box-shadow: none;
+  justify-content: center;
 }
 #minting-dapp .walletTop{
   position: fixed;
@@ -88,12 +80,12 @@ button{
   background-position: center;
   display: inline-block;
   padding: 1em;
-  border: 3px solid #53E7B1;
+  border: 3px solid white;
   filter: drop-shadow(0 23px 23px rgba(0, 0, 0, .5));
 }
 .connectButton{
   font-family: "Headers";
-  background-color: #23CF91;
+  background-color: #1da0f2;
   border: 0;
   color: white;
   font-size: 2em;
@@ -104,61 +96,25 @@ button{
   text-shadow: 0 2px rgba(0, 0, 0, .3);
 }
 .connectButton:hover, #minting-dapp .walletTop .connectButton:hover{
-  background-color: #23CF91;
+  background-color: #1da0f2;
   filter: drop-shadow(0 0px 0px rgba(0, 0, 0, .5));
   transform: translateY(0px);
   text-shadow: 0px 0px rgba(0, 0, 0, .3);
 }
-main #logo{
-  display: block;
-  margin: 0 auto 2.5em;
-  width: 499px;
-  height: auto;
-  max-width: 90%;
-  align-self: center;
-}
 .containerMintStatus{
-  background-image: url(../assets/bcg_minting.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
+  background-color: #1da0f27e;
+  border-radius: 2em;
   display: flex;
   flex-direction: column;
-  padding: 4em 3.7em 0 3em;
+  padding-top: .5em;
   position: relative;
-  max-height: 796px;
   align-items: center;
-  align-self: end;
-}
-.containerMintStatus::before{
-  content: "NFT Mint";
-  position: absolute;
-  font-family: "Headers";
-  color: #E78EFF;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  font-size: 2em;
-  margin: -10px auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  border-radius: 0.5em;
-  background-color: #65059B;
-  display: inline-table;
-  padding: 0.1em 0.5em;
-  border: 5px solid #F5D45C;
-  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .3);
-}
-.containerMintStatus::after{
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  background-image: url(../assets/hanzo_paw.png);
-  width: 98px;
-  height: 100px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  align-self: center;
+  font-family: 'Roboto', sans-serif!important;
+  max-width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .socialLinks{
   position: fixed;
@@ -177,7 +133,7 @@ main #logo{
   margin-bottom: auto;
   margin-top: auto;
   border-radius: .5em;
-  background-color: #650b9585;
+  background-color: #1da0f2;
   width: auto;
   padding-left:0;
   padding: .3em;
@@ -192,39 +148,54 @@ main #logo{
 }
 
 /* COLLECTION STATUS */
+#minting-dapp .collection-status{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: .5em;
+  max-width: 95%;
+}
 #minting-dapp .collection-status, #minting-dapp .cannot-mint, #minting-dapp .not-mainnet, #minting-dapp .collection-sold-out{
   background-color: transparent;
   box-shadow: none;
+  font-family: 'Roboto', sans-serif!important;
 }
 #minting-dapp .cannot-mint{
   color: white;
 }
 #minting-dapp .collection-status .user-address{
-  color: #E78EFF;
+  color: white;
   grid-column: span 2/span 2;
   border-bottom: 0;
   padding: 0;
   margin-bottom: .5em;
+  font-size: 1.2em!important;
+  padding-top: .5em;
 }
 .user-address .label{
   color: white!important;
+  font-size: 2em!important;
+  line-height: 1em;
+  font-family: "Headers";
+  margin-bottom: .3em;
 }
 #minting-dapp .collection-status .supply{
   grid-column: span 2 / span 2;
   border-right: 0;
   padding: 0;
-  margin: .5em auto .5em;
-  font-size: 2em;
+  margin: .75em auto .75em;
+  font-size: 3em;
   color: white;
   font-weight: 700;
   display: block;
   border: none;
+  text-align: center;
 }
 #minting-dapp .collection-status .current-sale{
   grid-column: span 2 / span 2;
   font-family: "Headers";
-  font-size: 1.75em;
-  color: #E8C854;
+  font-size: 3em;
+  color: white;
   text-shadow: 0 2px rgba(0, 0, 0, .3);
   padding: 0;
   margin-bottom: .5em;
@@ -238,7 +209,7 @@ main #logo{
   margin-bottom: .5em;
 }
 .mintableAmount{
-  font-family: "content";
+  font-family: 'Roboto', sans-serif;
   padding: 0!important;
   font-size: 1.5em;
   color: #E78EFF;
@@ -252,6 +223,9 @@ main #logo{
   box-shadow: none;
   color: white;
   overflow: visible;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 #minting-dapp .mint-widget .price{
   border: none;
@@ -260,13 +234,13 @@ main #logo{
   border: 0;
 }
 #minting-dapp .mint-widget .controls .decrease{
-  background-color: #D018F4;
+  background-color: white;
   border: 0;
   border-radius:.5em;
   transition:filter .3s;
 }
 #minting-dapp .mint-widget .controls .increase{
-  background-color: #23CF91;
+  background-color: #1da0f2;
   border: 0;
   border-radius:.5em;
   transition:filter .3s;
@@ -282,7 +256,7 @@ main #logo{
 #minting-dapp .mint-widget .mintButton{
   font-family: "Headers";
   font-size: 2.5em;
-  background-color: #23CF91;
+  background-color: #1da0f2;
   border: none;
   border-radius: .5em;
   margin-top: 1em;
@@ -293,7 +267,7 @@ main #logo{
   transition: all .2s ease-in-out;
 }
 #minting-dapp .mint-widget .mintButton:hover{
-  background-color: #5fefba;
+  background-color: #1da0f2;
   filter: drop-shadow(0 0px 0px rgba(0, 0, 0, .5));
   transform: translateY(0px);
   text-shadow: 0px 0px rgba(0, 0, 0, .3);
@@ -323,36 +297,14 @@ main #logo{
 /* MINTING WIDGET END */
 @media (min-width:1024px){
   body{
-  padding-left: 190px!important;
-  font-size: 20px!important;
-  }
-  .sidebar{
-    width: 183px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 0;
-    display: block;
-  }
-  #minting-dapp{
-    margin-left: 100px;
-    padding-top: 1em;
-  }
-  main #logo{
-    max-width: 100%;
+    font-size: 20px!important;
   }
   .containerMintStatus{
+    max-width: 100%;
     padding: 4em 4.7em 4em 4em;
   }
-  .containerMintStatus::after{
-    margin-top: -40px;
-    margin-right: 0;
-    width: 149px;
-    height: 156px;
-  }
   #minting-dapp .collection-status .current-sale{
-    font-size: 2.75em;
+    font-size: 3.75em;
   }
   #minting-dapp .walletTop{
     margin-top: .5em;
@@ -371,11 +323,8 @@ main #logo{
   .containerMintStatus{
     padding-bottom: 0;
   }
-  .containerMintStatus::after{
-    display: none;
-  }
   #minting-dapp .collection-status .supply{
-    margin: .25em;
+    margin: .5em;
     text-align: center;
   }
   #minting-dapp .mint-widget .price{

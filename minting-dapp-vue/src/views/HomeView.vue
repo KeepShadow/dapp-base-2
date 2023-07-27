@@ -1,35 +1,9 @@
 <template>
   <div id="minting-dapp" class="preview">
-    <div class="sidebar">
-      <ul>
-        <li>
-          <img src="../assets/nft_1.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_2.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_3.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_4.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_5.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_6.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_1.jpg" alt="Hanzo Nft Collection">
-        </li>
-        <li>
-          <img src="../assets/nft_2.jpg" alt="Hanzo Nft Collection">
-        </li>
-      </ul>
-    </div>
-    <img id="logo" src="../assets/plain_typo.png" alt="Logo Hanzo" />
-
+    <video class="videoBg" autoplay muted loop>
+      <source src="../assets/deadBirds_bg.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
     <div v-if="Web3.isNotMainnet" class="alert alert-warning" role="alert">
       You are not connected to Polygon Mainnet. <span class="small">Current network: <strong>{{Web3.network?.name}}</strong></span>
     </div>
@@ -44,7 +18,7 @@
         <collection-status />
         <mint-widget v-if="!Web3.isSoldOut"/>
         <div v-else>
-          <h2>Collection is <strong>sold out</strong>! <span class="emoji">🥳</span></h2>
+          <h2>Collection is <strong>sold out</strong>!</h2>
           You can buy from our beloved holders on <a :href="Web3.generateMarketplaceUrl" target="_blank">{{Web3.marketPlaceName}}</a>.
         </div>
       </div>
@@ -68,13 +42,18 @@
     <div class="socialLinks">
       <ul>
         <li>
-          <a href="https://twitter.com/LegendOfHanzo" target="_blank">
-            <img src="../assets/icon_twitter.png" alt="hanzo twitter">
+          <a href="https://twitter.com/deadbirdNFT" target="_blank">
+            <img src="../assets/icon_twitter.png" alt="DeadBirds twitter">
+          </a>
+        </li>
+        <li>
+          <a href="https://discord.gg/boxbies" target="_blank">
+            <img src="../assets/icon_discord.png" alt="DeadBirds discord">
           </a>
         </li>
         <li>
           <a href="https://t.me/hanzommorpg" target="_blank">
-            <img src="../assets/icon_tg.png" alt="hanzo telegram">
+            <img src="../assets/icon_opensea.png" alt="DeadBirds opensea">
           </a>
         </li>
       </ul>
