@@ -1,0 +1,388 @@
+@import '~tailwindcss/base';
+@import '~tailwindcss/components';
+@import '~tailwindcss/utilities';
+
+@import './components/general.scss';
+@import './components/minting-dapp.scss';
+
+@font-face {
+  font-family: "Content";
+  src: url("../fonts/Overpass-VariableFont_wght.woff");
+}
+@font-face {
+  font-family: "Headers";
+  src: url("../fonts/electroharmonix.woff");
+}
+body{
+  font-family: "Content";
+  font-size: 18px!important;
+  background-color: #65059B!important;
+  padding: 0!important;
+  background-image: url(../assets/bcg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: "Headers";
+}
+button{
+  font-family: "Headers";
+}
+.alert.alert-warning{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  border-radius: 0;
+  text-align: center;
+  z-index: 100;
+}
+.sidebar{
+  width: 183px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  display: none;
+  border-right: 10px solid #821FB8;
+}
+.sidebar ul{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  padding-left: 0;
+}
+#minting-dapp{
+  min-height: 100vh;
+  display: grid;
+  margin-top: 0;
+  gap: 0;
+  column-gap: 0;
+  max-width: 629px;
+  padding-top: 1.5em;
+}
+#minting-dapp .no-wallet{
+  background-color: transparent;
+  box-shadow: none;
+}
+#minting-dapp .walletTop{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 0;
+  margin-right: .5em;
+  transform: scale(.8);
+}
+#minting-dapp .walletTop .connectButton{
+  font-size: 1em;
+  transform: none;
+  width: 22px;
+  height: 19px;
+  background-image: url(../assets/icon_wallet.png);
+  background-size: 22px 19px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  padding: 1em;
+  border: 3px solid #53E7B1;
+  filter: drop-shadow(0 23px 23px rgba(0, 0, 0, .5));
+}
+.connectButton{
+  font-family: "Headers";
+  background-color: #23CF91;
+  border: 0;
+  color: white;
+  font-size: 2em;
+  border-radius: .5em;
+  filter: drop-shadow(0 50px 23px rgba(0, 0, 0, .5));
+  transform: translateY(-20px);
+  transition: all .2s ease-in-out;
+  text-shadow: 0 2px rgba(0, 0, 0, .3);
+}
+.connectButton:hover, #minting-dapp .walletTop .connectButton:hover{
+  background-color: #23CF91;
+  filter: drop-shadow(0 0px 0px rgba(0, 0, 0, .5));
+  transform: translateY(0px);
+  text-shadow: 0px 0px rgba(0, 0, 0, .3);
+}
+main #logo{
+  display: block;
+  margin: 0 auto 2.5em;
+  width: 499px;
+  height: auto;
+  max-width: 90%;
+  align-self: center;
+}
+.containerMintStatus{
+  background-image: url(../assets/bcg_minting.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  padding: 4em 3.7em 0 3em;
+  position: relative;
+  max-height: 796px;
+  align-items: center;
+  align-self: end;
+}
+.containerMintStatus::before{
+  content: "NFT Mint";
+  position: absolute;
+  font-family: "Headers";
+  color: #E78EFF;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-size: 2em;
+  margin: -10px auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0.5em;
+  background-color: #65059B;
+  display: inline-table;
+  padding: 0.1em 0.5em;
+  border: 5px solid #F5D45C;
+  box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, .3);
+}
+.containerMintStatus::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  background-image: url(../assets/hanzo_paw.png);
+  width: 98px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.socialLinks{
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 50px;
+  margin-top: 0;
+  height: 45px;
+  transform: scale(.8);
+}
+.socialLinks ul{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: auto;
+  margin-top: auto;
+  border-radius: .5em;
+  background-color: #650b9585;
+  width: auto;
+  padding-left:0;
+  padding: .3em;
+}
+.socialLinks ul li{
+  padding-left: .3em;
+  padding-right: .3em;
+  transition: opacity .2s;
+}
+.socialLinks ul li:hover{
+  opacity: .5;
+}
+
+/* COLLECTION STATUS */
+#minting-dapp .collection-status, #minting-dapp .cannot-mint, #minting-dapp .not-mainnet, #minting-dapp .collection-sold-out{
+  background-color: transparent;
+  box-shadow: none;
+}
+#minting-dapp .cannot-mint{
+  color: white;
+}
+#minting-dapp .collection-status .user-address{
+  color: #E78EFF;
+  grid-column: span 2/span 2;
+  border-bottom: 0;
+  padding: 0;
+  margin-bottom: .5em;
+}
+.user-address .label{
+  color: white!important;
+}
+#minting-dapp .collection-status .supply{
+  grid-column: span 2 / span 2;
+  border-right: 0;
+  padding: 0;
+  margin: .5em auto .5em;
+  font-size: 2em;
+  color: white;
+  font-weight: 700;
+  display: block;
+  border: none;
+}
+#minting-dapp .collection-status .current-sale{
+  grid-column: span 2 / span 2;
+  font-family: "Headers";
+  font-size: 1.75em;
+  color: #E8C854;
+  text-shadow: 0 2px rgba(0, 0, 0, .3);
+  padding: 0;
+  margin-bottom: .5em;
+  margin-top: .5em;
+  text-align: center;
+}
+#minting-dapp .collection-status .limit{
+  grid-column: span 2 / span 2;
+  color: #E78EFF;
+  padding: 0;
+  margin-bottom: .5em;
+}
+.mintableAmount{
+  font-family: "content";
+  padding: 0!important;
+  font-size: 1.5em;
+  color: #E78EFF;
+  grid-column: span 2 / span 2;
+}
+/* COLLECTION STATUS END */
+/* MINTING WIDGET */
+#minting-dapp .mint-widget{
+  width: 90%;
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+  overflow: visible;
+}
+#minting-dapp .mint-widget .price{
+  border: none;
+}
+#minting-dapp .mint-widget .controls{
+  border: 0;
+}
+#minting-dapp .mint-widget .controls .decrease{
+  background-color: #D018F4;
+  border: 0;
+  border-radius:.5em;
+  transition:filter .3s;
+}
+#minting-dapp .mint-widget .controls .increase{
+  background-color: #23CF91;
+  border: 0;
+  border-radius:.5em;
+  transition:filter .3s;
+}
+#minting-dapp .mint-widget .controls .decrease:hover, #minting-dapp .mint-widget .controls .increase:hover{
+  filter: brightness(1.5);
+}
+#minting-dapp .mint-widget .controls .mint-amount{
+  border: 0;
+  color: white;
+  font-size: 2em;
+}
+#minting-dapp .mint-widget .mintButton{
+  font-family: "Headers";
+  font-size: 2.5em;
+  background-color: #23CF91;
+  border: none;
+  border-radius: .5em;
+  margin-top: 1em;
+  color: white;
+  filter: drop-shadow(0 50px 23px rgba(0, 0, 0, .5));
+  transform: translateY(-20px);
+  text-shadow: 0 2px rgba(0, 0, 0, .3);
+  transition: all .2s ease-in-out;
+}
+#minting-dapp .mint-widget .mintButton:hover{
+  background-color: #5fefba;
+  filter: drop-shadow(0 0px 0px rgba(0, 0, 0, .5));
+  transform: translateY(0px);
+  text-shadow: 0px 0px rgba(0, 0, 0, .3);
+  color: black;
+}
+#minting-dapp .mint-widget .increase:disabled,
+#minting-dapp .mint-widget .increase[disabled]{
+  background-color: gray;
+  color: white;
+  opacity: .8;
+}
+#minting-dapp .mint-widget .increase:disabled:hover,
+#minting-dapp .mint-widget .increase[disabled]:hover{
+  filter: drop-shadow(0 0px 0px rgba(0, 0, 0, .5));
+}
+#minting-dapp .mint-widget .mintButton:disabled,
+#minting-dapp .mint-widget .mintButton[disabled]{
+  background-color: gray;
+  color: white;
+  opacity: .8;
+}
+#minting-dapp .mint-widget .mintButton:disabled:hover,
+#minting-dapp .mint-widget .mintButton[disabled]:hover{
+  filter: drop-shadow(0 50px 23px rgba(0, 0, 0, .5));
+  transform: translateY(-20px);
+}
+/* MINTING WIDGET END */
+@media (min-width:1024px){
+  body{
+  padding-left: 190px!important;
+  font-size: 20px!important;
+  }
+  .sidebar{
+    width: 183px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    display: block;
+  }
+  #minting-dapp{
+    margin-left: 100px;
+    padding-top: 1em;
+  }
+  main #logo{
+    max-width: 100%;
+  }
+  .containerMintStatus{
+    padding: 4em 4.7em 4em 4em;
+  }
+  .containerMintStatus::after{
+    margin-top: -40px;
+    margin-right: 0;
+    width: 149px;
+    height: 156px;
+  }
+  #minting-dapp .collection-status .current-sale{
+    font-size: 2.75em;
+  }
+  #minting-dapp .walletTop{
+    margin-top: .5em;
+    transform: scale(1);
+  }
+  .socialLinks{
+    margin-top: .5em;
+    transform: scale(1);
+    margin-right: 70px;
+  }
+}
+@media (max-width:350px){
+  body{
+    font-size: 14px!important;
+  }
+  .containerMintStatus{
+    padding-bottom: 0;
+  }
+  .containerMintStatus::after{
+    display: none;
+  }
+  #minting-dapp .collection-status .supply{
+    margin: .25em;
+    text-align: center;
+  }
+  #minting-dapp .mint-widget .price{
+    padding-top: .3em;
+    padding-bottom: .3em;
+  }
+  #minting-dapp .mint-widget .mintButton{
+    padding: 0;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "solidity.packageDefaultDependenciesDirectory": "smart-contract/node_modules",
+  "solidity.compileUsingRemoteVersion": "v0.8.13+commit.abaa5c0e",
+  "editor.tabSize": 2
+}

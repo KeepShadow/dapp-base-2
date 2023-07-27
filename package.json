@@ -1,0 +1,14 @@
+{
+  "name": "@Vanojx1/nft-erc721-collection-vue",
+  "description": "An all-in-one solution for ERC721 collections.",
+  "author": "Nicola Vanoni <nicolavanoni.dev@gmail.com>",
+  "license": "MIT",
+  "version": "2.4.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vanojx1/nft-erc721-collection-vue.git"
+  },
+  "scripts": {
+    "build-dapp": "cd smart-contract; yarn; yarn compile; cd ../minting-dapp-vue; yarn; yarn build"
+  }
+}
