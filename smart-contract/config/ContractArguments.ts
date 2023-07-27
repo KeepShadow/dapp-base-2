@@ -7,6 +7,7 @@ const ContractArguments = [
   CollectionConfig.tokenSymbol,
   utils.parseEther(CollectionConfig.whitelistSale.price.toString()),
   CollectionConfig.maxSupply,
+  CollectionConfig.whitelistSale.whitelistSupply,
   CollectionConfig.whitelistSale.maxMintAmountPerTx,
   CollectionConfig.hiddenMetadataUri,
   CollectionConfig.royaltyReceiver,

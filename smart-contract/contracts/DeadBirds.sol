@@ -10,7 +10,7 @@ import '@openzeppelin/contracts/utils/Strings.sol';
 import {ERC2981} from "@openzeppelin/contracts/token/common/ERC2981.sol";
 import "operator-filter-registry/src/DefaultOperatorFilterer.sol";
 
-contract InfectedDalmatian is ERC721AQueryable, Ownable, ReentrancyGuard, ERC2981, DefaultOperatorFilterer {
+contract DeadBirds is ERC721AQueryable, Ownable, ReentrancyGuard, ERC2981, DefaultOperatorFilterer {
 
   using Strings for uint256;
 

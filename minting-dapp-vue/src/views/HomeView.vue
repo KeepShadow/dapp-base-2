@@ -52,7 +52,7 @@
           </a>
         </li>
         <li>
-          <a href="https://t.me/hanzommorpg" target="_blank">
+          <a href="https://opensea.io/collection/deadbirdsofficial/" target="_blank">
             <img src="../assets/icon_opensea.png" alt="DeadBirds opensea">
           </a>
         </li>

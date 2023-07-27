@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { EthereumClient, w3mConnectors } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/html'
 import { configureChains, createConfig, getContract, prepareWriteContract, writeContract, waitForTransaction } from '@wagmi/core'
-import { polygonMumbai } from '@wagmi/core/chains'
+import { polygon } from '@wagmi/core/chains'
 /* import { publicProvider } from '@wagmi/core/providers/public' */
 import { jsonRpcProvider } from '@wagmi/core/providers/jsonRpc'
 import { toast } from 'vue3-toastify'
@@ -45,7 +45,7 @@ const defaultState: State = {
   initDone: false,
   userAddress: null,
   network: null,
-  networkConfig: CollectionConfig.testnet, /*    //HERE */
+  networkConfig: CollectionConfig.mainnet, /*    //HERE */
   totalSupply: 0,
   maxSupply: 0,
   maxMintAmountPerTx: 0,
@@ -63,11 +63,11 @@ const defaultState: State = {
 const projectId = CollectionConfig.walletConnectProjectId as string
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [polygonMumbai],
+  [polygon],
   [
     jsonRpcProvider({
       rpc: () => ({
-        http: 'https://rpc-mumbai.maticvigil.com/'
+        http: 'https://polygon-rpc.com/'
       })
     })
   ]
