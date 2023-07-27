@@ -88,13 +88,20 @@ const contractConf = {
   abi: infectedDalmatianABI
 }
 
+web3modal.subscribeEvents((newState) => {
+  const { name } = newState
+  if (name === 'ACCOUNT_CONNECTED') {
+    window.location.reload()
+  }
+})
+
 export const useWeb3 = defineStore('Web3', {
   state: () => defaultState,
   actions: {
     async init () {
       console.log('Web3 init start2')
       console.log(Whitelist.getRoot())
-      this.registerWalletEvents()
+      await this.registerWalletEvents()
 
       this.contract = getContract({
         ...contractConf,
@@ -113,14 +120,22 @@ export const useWeb3 = defineStore('Web3', {
         alreadyMintedAmount: 0
       })
 
+      if (this.userAddress != null) {
+        this.updateUserInfo()
+      }
+
       this.initDone = true
+    },
+    async updateUserInfo () {
+      this.isUserInWhitelist = Whitelist.contains(this.userAddress ?? '')
+      this.amountAllowed = Whitelist.getAmountAllowed(this.userAddress ?? '')
+      this.alreadyMintedAmount = await this.contract.read.alreadyMinted([this.userAddress ?? ''])
     },
     async registerWalletEvents () {
       ethereumClient.watchAccount(({ isConnected, address }) => {
         // console.log('ACCOUNT EVENT', isConnected, address)
         if (isConnected) {
           this.userAddress = address
-          this.alreadyMintedAmount = this.contract.read.alreadyMinted([this.userAddress ?? ''])
           /* console.log(Whitelist.getProofForAddress(this.userAddress!) as `0x${string}`[]) */
         } else {
           this.userAddress = null
